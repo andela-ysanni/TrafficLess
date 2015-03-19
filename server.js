@@ -28,15 +28,18 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true })); 
 
-// override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+// override with the X-HTTP-Method-Overrithde header in the request. simulate DELETE/PUT
 app.use(methodOverride('X-HTTP-Method-Override')); 
 
 // set the static files location /public/img will be /img for users
 app.use(express.static(__dirname + '/public')); 
 
 // routes ==================================================
-require('./app/routes')(app); // configure our routes
-
+//creating a route for my user.
+require('./app/routes/user_routes')(app); 
+//require('./app/routes')(app); 
+//configure our routes
+//require('./app/routes/location-routes')(app);
 // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);               
@@ -45,4 +48,5 @@ app.listen(port);
 console.log('Magic happens on port ' + port);
 
 // expose app           
-exports = module.exports = app;                         
+exports = module.exports = app; 
+//let me google first                        

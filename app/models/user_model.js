@@ -17,7 +17,7 @@ var userSchema = mongoose.Schema({
   },
   password: {
     type: String,
-    default: ''
+    required: 'Your password should not be less than 8 characters.',
   },
   email: {
     type: String
