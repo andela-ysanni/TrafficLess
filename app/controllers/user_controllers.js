@@ -37,4 +37,4 @@
   // app.get('*', function(req, res) {
   //   res.sendfile('./index.html'); // load our public/index.html file
   // });
- module.export = newUser;
+ module.exports = newUser; 
