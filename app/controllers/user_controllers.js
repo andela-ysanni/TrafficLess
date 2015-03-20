@@ -1,4 +1,5 @@
  var User = require('../models/user_model');
+ var _ = require('lodash'); 
 
  var newUser = {
      getAllUsers: function(req, res) {
@@ -53,7 +54,11 @@
      updateUser: function(req, res) {
       // update the users info
       // save the user
-      var user = req.body; 
+      var user = req.user; 
+      if (user) {
+        user = _.assign(user,req.body);
+        user.date_registered = Date.now();
+      }
       user.save(function(err) {
         if (err)
          res.send(err);
