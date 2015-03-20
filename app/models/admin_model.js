@@ -1,16 +1,7 @@
-// app/models/nerd.js
-// grab the mongoose module
+
 var mongoose = require('mongoose');
 
-var userSchema = mongoose.Schema({
-  first_name: {
-    type: String,
-    default: ''
-  },
-  last_name: {
-    type: String,
-    default: ''
-  },
+var adminSchema = mongoose.Schema({
   username: {
     type: String,
     required: 'Your username has to be unique'
@@ -26,11 +17,10 @@ var userSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  traffic_update: []
 });
 
 
 // define our nerd model
 // module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('admin', adminSchema);
 //exports.fromLocationSchema = mongoose.model('user', fromLocationSchema);

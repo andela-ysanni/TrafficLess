@@ -39,6 +39,8 @@ app.use(express.static(__dirname + '/public'));
 require('./app/routes/user_routes')(app); 
 //creating a route for locations.
 require('./app/routes/location_routes')(app);
+//creating a route for admin.
+require('./app/routes/admin_routes')(app);
 // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);               
