@@ -1,5 +1,22 @@
-<div class="jumbotron text-center">
-    <h1>Home Page 4 Life</h1>
 
-    <p>{{ tagline }}</p>
+
+<div class="jumbotron text-center">
+<h3>Registered user? Sign in to get recent traffic updates.</h3>
+  <input type="text" ng-model="userName" placeholder="email or username"> 
+  <input type="text" ng-model="password" placeholder="password"> 
+  <button ng-click='login()'> Login </button>
 </div>
+
+<br>
+<div class="jumbotron text-center">
+<h3>New to TrafficLess? Sign up to get recent traffic updates.</h3>
+  <input type="text" ng-model="firstName" placeholder="First Name" > 
+  <input type="text" ng-model="lastName" placeholder="Last Name">
+  <input type="text" ng-model="username" placeholder="Username"> 
+  <input type="text" ng-model="email" placeholder="E-mail"> 
+  <input type="text" ng-model="password" placeholder="signUppassword"> 
+  <button ng-click='signUp()'> Sign up for TrafficLess </button>
+</div>
+
+
+

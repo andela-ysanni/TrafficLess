@@ -1,53 +1,54 @@
 // server.js
 
 // modules =================================================
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
+var express = require('express');
+var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var mongoose       = require('mongoose');
+var mongoose = require('mongoose');
+var userRoute = require('./app/routes/user_routes');
+var updateRoute = require('./app/routes/update_routes');
 // configuration ===========================================
-    
+
 // config files
 var db = require('./config/db');
 //console.log(db);
 
+var app = express();
+
 // set our port
-var port = process.env.PORT || 2020; 
+var port = process.env.PORT || 4040;
 
 // connect to our mongoDB database 
 // (uncomment after you enter in your own credentials in config/db.js)
- mongoose.connect('mongodb://localhost/TrafficLess'); 
-// get all data/stuff of the body (POST) parameters
-// parse application/json 
-app.use(bodyParser.json()); 
-
-// parse application/vnd.api+json as json
-app.use(bodyParser.json({ type: 'application/vnd.api+json' })); 
+mongoose.connect(db.url);
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// override with the X-HTTP-Method-Overrithde header in the request. simulate DELETE/PUT
-app.use(methodOverride('X-HTTP-Method-Override')); 
+app.use(bodyParser.json());
+
+//override with the X-HTTP-Method-Overrithde header in the request. simulate DELETE/PUT
+//app.use(methodOverride('X-HTTP-Method-Override'));
 
 // set the static files location /public/img will be /img for users
-app.use(express.static(__dirname + '/public')); 
+app.use( express.static(__dirname + '/public'));
 
 // routes =============//configure our routes
 //creating a route for users.
-require('./app/routes/user_routes')(app); 
+userRoute(app);
 //creating a route for locations.
-require('./app/routes/location_routes')(app);
-//creating a route for admin.
-require('./app/routes/admin_routes')(app);
-// start app ===============================================
-// startup our app at http://localhost:8080
-app.listen(port);               
+updateRoute(app);
+
+app.get('*', function(req, res) {
+	//console.log('send index');
+	//console.log(Object.keys(res));
+	//console.log('send index done');
+  res.sendFile( __dirname + '/index.html'); 
+});
+
+app.listen(port);
 
 // shoutout to the user                     
 console.log('Magic happens on port ' + port);
 
-// expose app           
-exports = module.exports = app; 
-                       
+// expose app         
