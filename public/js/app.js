@@ -1,4 +1,4 @@
-var appTrafficLess = angular.module('appTrafficLess', ['ngRoute', 'ngResource']);
+var appTrafficLess = angular.module('appTrafficLess', ['ngRoute', 'ngResource', 'ngMaterial']);
 
 appTrafficLess.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {

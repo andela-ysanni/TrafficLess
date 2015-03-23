@@ -28,6 +28,10 @@ var port = process.env.PORT || 4040;
 // connect to our mongoDB database 
 mongoose.connect(db.url);
 
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
 app.use(bodyParser.json());
 // set up our express application
 // parse application/x-www-form-urlencoded

@@ -1,4 +1,4 @@
- var User = require('../models/user_model');
+var User = require('../models/user_model');
  var _ = require('lodash');
 
  var newUser = {

@@ -22,8 +22,9 @@ var updateSchema = mongoose.Schema({
     default: Date.now
   },
   user: {
-    type: Schema.ObjectId,
-    ref: 'User'
+    type: mongoose.Schema.ObjectId,
+    ref: 'user',
+    required : true
   }
 });
 

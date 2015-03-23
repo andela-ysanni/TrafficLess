@@ -2,24 +2,21 @@ var Update = require('../models/update_model');
 var _ = require('lodash');
 
 var newUpdates = {
-  getAllUpdates: function(req, res, next) {
+  getAllUpdates: function(req, res) {
     Update.find().sort('-createdOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
       res.json(updates);
-
-      next();
     });
   },
 
-  createUpdate: function(req, res, next) {
+  createUpdate: function(req, res) {
     var body = req.body;
     var update = new Update(body);
     update.save(function(err, update) {
       if (err)
         res.send(err);
       res.status(200).send(update);
-      next();
     });
   },
 
@@ -33,11 +30,10 @@ var newUpdates = {
     });
   },
 
-  getSingleUpdate: function(req, res, next) {
+  getSingleUpdate: function(req, res) {
     var update = req.update;
-    res.json(update);
-
-    next();
+    res.status(200).json(update);
+    console.log('yeahhhhhhhh');
   },
 
   // route to handle delete goes here (app.delete)

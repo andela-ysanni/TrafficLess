@@ -10,5 +10,5 @@ module.exports = function(app) {
   //to update update info
   app.put('/api/updates/:update_id', update.createUpdate);
   // Finish by binding the item middleware
-  app.param('updates_id', update.updateById);
+  app.param('update_id', update.updateById);
 };
