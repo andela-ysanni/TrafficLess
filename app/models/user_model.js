@@ -21,7 +21,7 @@ var userSchema = mongoose.Schema({
     default: Date.now
   },
   traffic_update: [
-  { type : mongoose.Schema.ObjectId, ref : 'user' }]
+  { type : mongoose.Schema.ObjectId, ref : 'update' }]
   
 });
 
