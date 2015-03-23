@@ -17,10 +17,11 @@ var updateSchema = mongoose.Schema({
     type: String,
     default: ''
   },
-  createdOn: {
+  postedOn: {
     type: Date,
     default: Date.now
-  }
+  },
+  user: [{ type : mongoose.Schema.ObjectId, ref : 'user' }]
 });
 
 module.exports = mongoose.model('update', updateSchema);

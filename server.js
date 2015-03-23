@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var authenticate = require('./config/auth')(passport);
+//var authenticate = require('')(passport);
 var session = require('express-session');
 var app = express();
 
