@@ -1,14 +1,9 @@
 angular.module('appTrafficLess')
   .controller('appUser', ['$scope', 'Users', '$location',
     function($scope, Users, $location) {
-
-      $scope.firstName = "asgdagdsg";
-      $scope.lastName = "asgdagdsg";
-      $scope.username = "asgdagdsg";
-      $scope.email = "asgdagdsg";
-      $scope.password = "asgdagdsg";
-
       $scope.signUp = function() {
+        //if ($scope.firstName.length === 0) {console.log('nahhhh');}
+
         var user = new Users({
           first_name: $scope.firstName,
           last_name: $scope.lastName,
@@ -16,14 +11,13 @@ angular.module('appTrafficLess')
           password: $scope.password,
           email: $scope.email
         });
-
-        console.log(user);
         user.$save(function(data) {
-          //$location.path('/api/users');
           console.log(data);
+          $location.path('../views/loggedin-home.html');
         }, function(err) {
-
+        	console.log('dcfgvbhj');
         });
       };
+   
     }
   ]);

@@ -1,7 +1,7 @@
 var appTrafficLess = angular.module('appTrafficLess', ['ngRoute', 'ngResource']);
 
-appTrafficLess.config(['$routeProvider',
-  function($routeProvider) {
+appTrafficLess.config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: '../views/home.html',
@@ -17,5 +17,9 @@ appTrafficLess.config(['$routeProvider',
       .otherwise({
         redirectTo: '/home'
       });
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
   }
 ]);

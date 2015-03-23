@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 var newUpdates = {
   getAllUpdates: function(req, res, next) {
-    Update.find(function(err, updates) { // use mongoose to get all updates in the database
+    Update.find().sort('-createdOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
       res.json(updates);
@@ -18,8 +18,7 @@ var newUpdates = {
     update.save(function(err, update) {
       if (err)
         res.send(err);
-      res.send(200, update);
-
+      res.status(200).send(update);
       next();
     });
   },
@@ -44,9 +43,11 @@ var newUpdates = {
   // route to handle delete goes here (app.delete)
   deleteUpdate: function(req, res) {
 
-    Update.remove({ _id: req.params.update_id }, function(err, update) {
+    Update.remove({
+      _id: req.params.update_id
+    }, function(err, update) {
       if (err)
-          res.send(err);
+        res.send(err);
 
       res.json({
         mesage: 'Traffic update Deleted Successfully!'

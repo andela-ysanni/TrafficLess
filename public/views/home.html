@@ -1,22 +1,41 @@
-
-
 <div class="jumbotron text-center">
-<h3>Registered user? Sign in to get recent traffic updates.</h3>
-  <input type="text" ng-model="userName" placeholder="email or username"> 
-  <input type="text" ng-model="password" placeholder="password"> 
+  <h3>Registered user? Sign in to get recent traffic updates.</h3>
+  <input type="text" ng-model="userName" placeholder="email or username" required>
+  <input type="text" ng-model="signinpassword" placeholder="password">
   <button ng-click='login()'> Login </button>
 </div>
-
-<br>
-<div class="jumbotron text-center">
-<h3>New to TrafficLess? Sign up to get recent traffic updates.</h3>
-  <input type="text" ng-model="firstName" placeholder="First Name" > 
-  <input type="text" ng-model="lastName" placeholder="Last Name">
-  <input type="text" ng-model="username" placeholder="Username"> 
-  <input type="text" ng-model="email" placeholder="E-mail"> 
-  <input type="text" ng-model="password" placeholder="signUppassword"> 
-  <button ng-click='signUp()'> Sign up for TrafficLess </button>
-</div>
-
-
-
+<form name="userSignUp" ng-submit="signUp()" novalidate>
+  <!-- novalidate prevents HTML5 validation since we will be validating ourselves -->
+  <br>
+  <div class="jumbotron text-center">
+    <h3>New to TrafficLess? Sign up to get recent traffic updates.</h3>
+      <input type="text" name="firstName" ng-model="firstName" placeholder="First Name" required>
+      <span style="color:red" ng-show="userSignUp.firstName.$dirty && userSignUp.firstName.$invalid">
+  		<span ng-show="userSignUp.firstName.$error.required">First Name is required.</span>
+      </span>
+    
+      <input type="text" name="lastName" ng-model="lastName" placeholder="Last Name" required>
+      <span style="color:red" ng-show="userSignUp.lastName.$dirty && userSignUp.lastName.$invalid">
+  		<span ng-show="userSignUp.lastName.$error.required">Last Name is required.</span>
+      </span>
+   
+      <input type="text" name="username" ng-model="username" placeholder="Username" required>
+      <span style="color:red" ng-show="userSignUp.username.$dirty && userSignUp.username.$invalid">
+  		<span ng-show="userSignUp.username.$error.required">Username is required.</span>
+      </span>
+   
+      <input type="email" name="email" ng-model="email" placeholder="E-mail" required>
+      <span style="color:red" ng-show="userSignUp.email.$dirty && userSignUp.email.$invalid">
+			<span ng-show="userSignUp.email.$error.required">Email is required.</span>
+      <span ng-show="userSignUp.email.$error.email">Invalid email address.</span>
+      </span>
+    
+      <input type="password" name="password" ng-model="password" placeholder="signUppassword" required>
+      <span style="color:red" ng-show="userSignUp.password.$dirty && userSignUp.password.$invalid">
+  		<span ng-show="userSignUp.password.$error.required">Password is required.</span>
+      </span>
+   <p>
+      <input type="submit" value="Sign up for TrafficLess" ng-disabled="userSignUp.$invalid">
+    </p>
+  </div>
+</form>

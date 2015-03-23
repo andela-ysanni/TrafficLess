@@ -7,48 +7,53 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var userRoute = require('./app/routes/user_routes');
 var updateRoute = require('./app/routes/update_routes');
+var passport = require('passport');
+var flash = require('connect-flash');
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+//var authenticate = require('./config/auth')(passport);
+var session = require('express-session');
+var app = express();
+
 // configuration ===========================================
 
 // config files
 var db = require('./config/db');
-//console.log(db);
 
-var app = express();
 
 // set our port
 var port = process.env.PORT || 4040;
 
 // connect to our mongoDB database 
-// (uncomment after you enter in your own credentials in config/db.js)
 mongoose.connect(db.url);
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(bodyParser.json());
+// set up our express application
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser()); // get information from html forms
 
-//override with the X-HTTP-Method-Overrithde header in the request. simulate DELETE/PUT
-//app.use(methodOverride('X-HTTP-Method-Override'));
+
+
 
 // set the static files location /public/img will be /img for users
-app.use( express.static(__dirname + '/public'));
-
-// routes =============//configure our routes
-//creating a route for users.
+app.use(express.static(__dirname + '/public'));
 userRoute(app);
-//creating a route for locations.
 updateRoute(app);
 
+// app.get('*', function(req, res) {
+//   res.sendFile( __dirname + '/index.html'); 
+// });
+
 app.get('*', function(req, res) {
-	//console.log('send index');
-	//console.log(Object.keys(res));
-	//console.log('send index done');
-  res.sendFile( __dirname + '/index.html'); 
+     res.sendFile('index.html', { root: './public' });
 });
 
 app.listen(port);
 
 // shoutout to the user                     
-console.log('Magic happens on port ' + port);
-
-// expose app         
+console.log('This works....Yeahhhh ' + port);
+exports = module.exports = app;

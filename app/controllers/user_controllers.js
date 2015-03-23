@@ -15,7 +15,7 @@
    },
    
    // route to handle creating goes here (post)
-   createUser: function(req, res) {
+   createUser: function(req, res) { User.find().sort('-date_registered');
      // var body = {
      //   first_name: req.body.first_name,
      //   last_name: req.body.last_name,
