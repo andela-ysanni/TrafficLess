@@ -5,7 +5,7 @@ appTrafficLess.config(['$routeProvider', '$locationProvider',
     $routeProvider
       .when('/', {
         templateUrl: '../views/home.html',
-        controller: 'appUser'
+        controller: 'AuthCtrl'
       })
       .when('/home', {
         templateUrl: '../views/loggedin-home.html',
@@ -15,7 +15,7 @@ appTrafficLess.config(['$routeProvider', '$locationProvider',
         templateUrl: '../views/about.html'
       })
       .otherwise({
-        redirectTo: '/home'
+        redirectTo: '/'
       });
     $locationProvider.html5Mode({
       enabled: true,

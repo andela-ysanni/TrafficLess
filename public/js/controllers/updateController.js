@@ -10,7 +10,7 @@ angular.module('appTrafficLess')
         	dueTo: $scope.Dueto
         });
     	update.$save(function(trafficData){
-    		var traffic = $scope.trafficData;
+    		//var traffic = $scope.trafficData;
     			console.log(trafficData);	
     	}, function(error){
     			console.log(error);

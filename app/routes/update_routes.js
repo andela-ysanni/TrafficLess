@@ -1,14 +1,14 @@
 var update = require('../controllers/update_controllers');
 
 module.exports = function(app) {
-  app.get('/api/updates', update.getAllUpdates);
-  app.post('/api/updates', update.createUpdate);
+  app.route('/api/updates').get(update.getAllUpdates);
+  app.route('/api/updates').post(update.createUpdate);
   //to get a single user update.
-  app.get('/api/updates/:update_id', update.getSingleUpdate);
+  app.route('/api/updates/:update_id').get(update.getSingleUpdate);
   //to delete a single update.
-  app.delete('/api/updates/:update_id', update.deleteUpdate);
+  app.route('/api/updates/:update_id').delete(update.deleteUpdate);
   //to update update info
-  app.put('/api/updates/:update_id', update.createUpdate);
+  app.route('/api/updates/:update_id').put(update.createUpdate);
   // Finish by binding the item middleware
   app.param('update_id', update.updateById);
 };

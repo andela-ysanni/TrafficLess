@@ -1,0 +1,27 @@
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="AuthCtrl">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="name" href="#">TrafficLess</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <!--  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a> -->
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li class="dropdown" dropdown>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
+              <span data-ng-bind="authentication.user.email"></span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/auth/signout">Signout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>

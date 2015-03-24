@@ -19,7 +19,7 @@ var userSchema = mongoose.Schema({
   date_registered: {
     type: Date,
     default: Date.now
-  },
+  }
   // traffic_update: [
   // { type : mongoose.Schema.ObjectId, ref : 'update' }]
   
@@ -28,5 +28,5 @@ var userSchema = mongoose.Schema({
 
 // define our nerd model
 // module.exports allows us to pass this to other files when it is called
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('User', userSchema);
 

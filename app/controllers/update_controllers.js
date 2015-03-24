@@ -3,6 +3,7 @@ var _ = require('lodash');
 
 var newUpdates = {
   getAllUpdates: function(req, res) {
+    debugger;
     Update.find().sort('-createdOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
