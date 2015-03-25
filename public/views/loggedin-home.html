@@ -1,29 +1,37 @@
-<br><br><br>
-<div class="row">
+<div class="searchRow">
   <div class="col-md-2"></div>
   <div class="col-md-2"></div>
   <div class="col-md-6">
     <input ng-model='searchFrom' placeholder="From">
     <input ng-model='searchTo' placeholder="To">
-    <button type="button" class="btn btn-primary btn-sm" ng-click='search()'> Search </button>
-    </div>
+    <button class="searchButton" ng-click='search()'> Search </button>
+  </div>
 </div>
-
-<div class="jumbotron text-center">
-<h3></h3>
-  From <input type="text" ng-model="from" placeholder="From" > 
-  To <input type="text" ng-model="to" placeholder="To">
-  Is <select ng-model="is">
-  <option value="free"> Free</option>
-  <option value="slow"> Slow</option>
-  <option value="congested">Congested</option>
-  <option value="moving">Moving</option>
-</select>
-  <!-- <input type="text" ng-model="username" placeholder="Is">  -->
-  Due to <input type="text" ng-model="Dueto" placeholder="Due to"> 
-  <button ng-click='update()'> Update</button>
+<div class="row">
+  <input type="text" value="From" ng-model="from" placeholder="From #Ikeja">
+  <input type="text" ng-model="to" placeholder="To #Maryland">
+  <label></label>
+  <select class="browser-default optionValue" ng-model="is">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="free"> Free</option>
+    <option value="slow"> Slow</option>
+    <option value="congested">Congested</option>
+    <option value="moving">Moving</option>
+  </select>
+  <!--  <input type="text" ng-model="username" placeholder="Is"> -->
+  <input type="text" ng-model="Dueto" placeholder="Due to">
+  <p class="signIn">
+    <!--  <a class="btn-floating btn-large waves-effect waves-light red" ng-click="update()"><i class="mdi-content-add"></i></a> -->
+    <button ng-click='update()'><a class="btn-floating btn-large waves-effect waves-light red">
+      <i class="mdi-content-add"></i></a>
+    </button>
+  </p>
 </div>
-
-<div class="col-md-8">
-<h1> From</h2>
+<div>
+<ul ng-repeat="update in updates">
+  <li> From: {{update.from}}</li>
+  <li> To: {{update.to}}</li>
+  <li> Is: {{update.is}}</li>
+  <li> Due To: {{update.dueTo}}</li>
+</ul>
 </div>

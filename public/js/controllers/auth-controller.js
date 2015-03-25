@@ -19,19 +19,21 @@ angular.module('appTrafficLess')
       };
       $http.post('/auth/signup', user).success(function(response) {
         $scope.authentication.user = response;
-        console.log('xoxox', response);
+        $scope.authentication.user.email = response.email;
+        console.log('xoxox', response.email);
         $location.path('/home');
       }).error(function(err) {
         console.log('sad', err);
       });
     };
 
-    $scope.signin = function() {
+    $scope.signIn = function() {
+      console.log('bitch face');
       $http.post('/auth/signin', {}).success(function(response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
         // And redirect to the index page
-        $location.path('/');
+        $location.path('/home');
       }).error(function(response) {
         $scope.error = response.message;
       });

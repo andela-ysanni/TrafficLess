@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 /**
  * Module dependencies.
@@ -14,7 +14,7 @@ module.exports = function() {
 			passwordField: 'password'
 		},
 		function(username, password, done) {
-			debugger;
+			//debugger;
 			User.findOne({
 				username: username
 			}, function(err, user) {

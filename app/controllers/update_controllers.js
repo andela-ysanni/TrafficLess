@@ -1,9 +1,10 @@
+var mongoose = require('mongoose');
 var Update = require('../models/update_model');
 var _ = require('lodash');
+var bodyParser = require('body-parser');
 
 var newUpdates = {
   getAllUpdates: function(req, res) {
-    debugger;
     Update.find().sort('-createdOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
@@ -14,9 +15,11 @@ var newUpdates = {
   createUpdate: function(req, res) {
     var body = req.body;
     var update = new Update(body);
+
     update.save(function(err, update) {
-      if (err)
-        res.send(err);
+      if (err) {
+        return res.send(err);
+      }
       res.status(200).send(update);
     });
   },
@@ -49,6 +52,18 @@ var newUpdates = {
       res.json({
         mesage: 'Traffic update Deleted Successfully!'
       });
+    });
+  },
+  getAParticularUpdate: function(req, res) {
+    console.log('aaa', req);
+    Update.find({
+      "from": req.body.from,
+      "to": req.body.to
+    }, function(err, updates) {
+      if (err) {
+        return res.send(err);
+      }
+      res.json(updates);
     });
   }
 };
