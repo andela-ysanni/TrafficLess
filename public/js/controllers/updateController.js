@@ -1,9 +1,7 @@
 angular.module('appTrafficLess')
   .controller('appUpdates', ['$scope', 'Updates', '$http', function($scope, Updates, $http) {
 
-    $scope.searchFrom = "#ipja";
-    $scope.searchTo = "#ikeja";
-    
+
     $scope.update = function() {
       //console.log('trafficData');
       var update = new Updates({
@@ -25,13 +23,17 @@ angular.module('appTrafficLess')
         console.log('old', $scope.updates);
       }).error(function(error) {});
     };
-
     $scope.search = function() {
       console.log('yeeahhh');
-      $http.get('/api/updates-lol').success(function(data) {
-        console.log(data);
+      var query = {
+        from: $scope.searchFrom,
+        to: $scope.searchTo
+      };
+      $http.post('/api/updates/update', query).success(function(data) {
+        console.log('it works', data);
       }).error(function(error) {
-
+        // query = $scope.searchFrom + '&' + $scope.searchTo;
+        // $http.get('/api/updates/update?query' + query);
       });
     };
   }]);

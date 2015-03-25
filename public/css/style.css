@@ -1,3 +1,12 @@
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+.footer  {
+    flex: 1 0 auto;
+  }
 .name {
   float: left;
   height: 50px;
@@ -66,40 +75,69 @@ h3 {
   margin-bottom: 20px;
   padding-top: 10px;
 }
+
 .searchButton {
-	background-color: #DFDFDF;
-    color: #9F9F9F;
+  background-color: #DFDFDF;
+  color: #9F9F9F;
 }
+
 .searchInput {
-	.input-field label {
-  color: #9e9e9e;
-  position: absolute;
-  top: 0.8rem;
-  right: 10rem;
-  font-size: 1rem;
-  cursor: text;
-  -webkit-transition: 0.2s ease-out;
-  -moz-transition: 0.2s ease-out;
-  -o-transition: 0.2s ease-out;
-  -ms-transition: 0.2s ease-out;
-  transition: 0.2s ease-out;
-  width: 50px;
+  .input-field label {
+    color: #9e9e9e;
+    position: absolute;
+    top: 0.8rem;
+    right: 10rem;
+    font-size: 1rem;
+    cursor: text;
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    -ms-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+    width: 50px;
+  }
 }
-}
+
 .optionValue {
   background-color: #F96363;
   padding: 5px;
   border: 1px solid #f2f2f2;
   border-radius: 2px;
-  height: 3rem; 
+  height: 3rem;
   width: 50%;
   margin-left: 300px;
   font-size: 15px;
 }
+
 nav {
   background-color: #388E3C;
 }
+
 .red {
   background-color: #388E3C !important;
+  margin-left: -140px;
 }
+
+.update {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 500px;
 }
+
+.classposition {
+  margin: 0.5rem 0 1rem 0
+}
+
+.updateForm {
+  margin-left: -950px;
+  margin-right: 200px;
+  margin-bottom: 20px;
+  width: 500px;
+}
+footer.page-footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  background-color: #388E3C;
+}
+

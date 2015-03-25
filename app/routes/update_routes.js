@@ -10,6 +10,8 @@ module.exports = function(app) {
   //to update update info
   app.route('/api/updates/:update_id').put(update.createUpdate);
   // Finish by binding the item middleware
-  app.route('/api/updates-lol').get(update.getAParticularUpdate);
+  app.route('/api/updates/update').post(update.getAParticularUpdate);
   app.param('update_id', update.updateById);
 };
+
+

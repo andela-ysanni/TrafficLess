@@ -2,36 +2,50 @@
   <div class="col-md-2"></div>
   <div class="col-md-2"></div>
   <div class="col-md-6">
-    <input ng-model='searchFrom' placeholder="From">
-    <input ng-model='searchTo' placeholder="To">
+    <input ng-model='searchFrom' placeholder="From" name="from">
+    <input ng-model='searchTo' placeholder="To" name="to">
     <button class="searchButton" ng-click='search()'> Search </button>
   </div>
-</div>
-<div class="row">
-  <input type="text" value="From" ng-model="from" placeholder="From #Ikeja">
-  <input type="text" ng-model="to" placeholder="To #Maryland">
-  <label></label>
-  <select class="browser-default optionValue" ng-model="is">
-    <option value="" disabled selected>Choose your option</option>
-    <option value="free"> Free</option>
-    <option value="slow"> Slow</option>
-    <option value="congested">Congested</option>
-    <option value="moving">Moving</option>
-  </select>
-  <!--  <input type="text" ng-model="username" placeholder="Is"> -->
-  <input type="text" ng-model="Dueto" placeholder="Due to">
-  <p class="signIn">
-    <!--  <a class="btn-floating btn-large waves-effect waves-light red" ng-click="update()"><i class="mdi-content-add"></i></a> -->
-    <button ng-click='update()'><a class="btn-floating btn-large waves-effect waves-light red">
-      <i class="mdi-content-add"></i></a>
-    </button>
-  </p>
-</div>
-<div>
-<ul ng-repeat="update in updates">
+  <form class="updateForm">
+    <div class="jumbotron text-center">
+      <input type="text" value="From" ng-model="from" placeholder="From #Ikeja">
+      <input type="text" ng-model="to" placeholder="To #Maryland">
+      
+      <label></label>
+      <select class="browser-default optionValue" ng-model="is">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="free"> Free</option>
+        <option value="slow"> Slow</option>
+        <option value="congested">Congested</option>
+        <option value="moving">Moving</option>
+      </select>
+      <!--  <input type="text" ng-model="username" placeholder="Is"> -->
+      <input type="text" ng-model="Dueto" placeholder="Due to">
+      <p class="signIn">
+        <!--  <a class="btn-floating btn-large waves-effect waves-light red" ng-click="update()"><i class="mdi-content-add"></i></a> -->
+        <a class="btn-floating btn-large waves-effect waves-light red">
+          <i class="mdi-content-add" ng-click='update()'></i></a>
+      </p>
+    </div>
+  </form>
+  <div class="update">
+    <div class="col s12 m7">
+      <div class="cardposition" ng-repeat="update in updates">
+        <div class="card-content">
+          from: {{update.from}} to: {{update.to}} is: {{update.is}} Due to: {{update.dueTo}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div>
+<ul >
   <li> From: {{update.from}}</li>
   <li> To: {{update.to}}</li>
   <li> Is: {{update.is}}</li>
   <li> Due To: {{update.dueTo}}</li>
 </ul>
-</div>
+</div> -->
+  <!-- <div class="card-action">
+  <a href="#">This is a link</a>
+  <a href='#'>This is a link</a>
+</div> -->

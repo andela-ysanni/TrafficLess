@@ -42,7 +42,6 @@ var newUpdates = {
 
   // route to handle delete goes here (app.delete)
   deleteUpdate: function(req, res) {
-
     Update.remove({
       _id: req.params.update_id
     }, function(err, update) {
@@ -54,8 +53,10 @@ var newUpdates = {
       });
     });
   },
+
   getAParticularUpdate: function(req, res) {
-    console.log('aaa', req);
+    console.log('aaa', req.body);
+    //User.find({age: {$gte: 21, $lte: 65}}, callback);
     Update.find({
       "from": req.body.from,
       "to": req.body.to
