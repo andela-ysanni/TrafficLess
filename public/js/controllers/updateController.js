@@ -8,7 +8,6 @@ angular.module('appTrafficLess')
 
     });
     $scope.update = function() {
-      console.log('yetty');
       var update = new Updates({
         from: $scope.from,
         to: $scope.to,
@@ -47,18 +46,28 @@ angular.module('appTrafficLess')
     };
 
     $scope.edit = function(update) {
-      console.log(update);
       $scope.displayEditForm = true;
       $scope.editedUpdate = update;
     };
 
     $scope.editUpdate = function() {
-      console.log('yeahhhh');
+      $scope.displayEditForm = false;
       var update = $scope.editedUpdate;
       $http.put('/api/updates/' + update._id, update).success(function(data) {
-        console.log(data);
+         $http.get('/api/updates').success(function(updates) {
+            $scope.update = updates;
+          }).error(function(error) {});
+      }).error(function(error) {});
+    };
 
-        //$scope.updates = updates;
+    $scope.delete = function(updateId) {
+      //$scope.updates = update;
+      confirm("Are you sure you want to delete?");
+      $http.delete('/api/updates/'+ updateId).success(function() {
+         $http.get('/api/updates').success(function(updates) {
+            $scope.updates = updates;
+          }).error(function(error) {});
       }).error(function(error) {});
     };
   }]);
+   

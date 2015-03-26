@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 var newUpdates = {
   getAllUpdates: function(req, res) {
-    Update.find().sort('+postedOn').exec(function(err, updates) { // use mongoose to get all updates in the database
+    Update.find().sort('-postedOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
       res.json(updates);

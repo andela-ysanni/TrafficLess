@@ -16,6 +16,7 @@ var session = require('express-session');
 var app = express();
 var consolidate = require('consolidate');
 
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'livesite';
 
 // configuration ===========================================
 
@@ -25,9 +26,16 @@ var db = require('./config/db');
 
 // set our port
 var port = process.env.PORT || 8000;
+// connect to our livesite 
+if (env === 'livesite') {
+	mongoose.connect(db.localurl);
+}
+// connect to our production url
+else {
+	mongoose.connect(db.productionurl);
+}
 
-// connect to our mongoDB database 
-mongoose.connect(db.url);
+//db.dbconnect();
 
 // Set swig as the template engine
 app.engine('server.view.html', consolidate['swig']);
