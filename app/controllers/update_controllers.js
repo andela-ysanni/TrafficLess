@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 
 var newUpdates = {
   getAllUpdates: function(req, res) {
-    Update.find().sort('-createdOn').exec(function(err, updates) { // use mongoose to get all updates in the database
+    Update.find().sort('+postedOn').exec(function(err, updates) { // use mongoose to get all updates in the database
       if (err)
         res.send(err);
       res.json(updates);
@@ -65,6 +65,22 @@ var newUpdates = {
         return res.send(err);
       }
       res.json(updates);
+    });
+  },
+  updateUpdate: function(req, res) {
+    console.log(req.update);
+    var update = req.update;
+    if (update) {
+      update = _.assign(update, req.body);
+    }
+
+    update.save(function(err, data) {
+      if (err)
+        res.json(err);
+      res.json({
+        update: data,
+        message: 'Traffic update updated Successfully!'
+      });
     });
   }
 };

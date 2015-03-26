@@ -10,19 +10,19 @@
 </head>
 
 <body class="ng-cloak">
-  <!--Embedding The User Object-->
-  <script type="text/javascript">
-  var user = {{user | json | safe}};
-  </script>
-  <header data-ng-include="'views/header.html'">
-  </header>
-  <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-  <!-- </nav> -->
-  <div class="footer" ng-view></div>
-  <footer class="page-footer">
-    <p class="footer-text">© 2015 All right reserved. Andela Class IV.</p>
-    <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-  </footer>
+    <!--Embedding The User Object-->
+    <script type="text/javascript">
+    var user = {{user | json | safe}};
+    </script>
+    <header data-ng-include="'views/header.html'">
+    </header>
+    <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+    <!-- </nav> -->
+    <div class="content" ng-view></div>
+    <footer class="page-footer">
+      <p class="footer-text">© 2015 All right reserved. Andela Class IV.</p>
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </footer>
   <script src="lib/angular/angular.js"></script>
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="lib/materialize/js/materialize.js"></script>

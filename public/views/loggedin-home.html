@@ -1,62 +1,114 @@
+<div class="overlay" ng-show="displayEditForm">
+</div>
+
 <div class="row">
-  <form class="col s12 hi" ng-submit="search()">
+  <form name="Search" class="col s12 hi" ng-submit="search()" novalidate>
     <div class="row hey">
       <div class="input-field col s6">
         <i class="mdi-maps-directions-walk prefix"></i>
-        <input id="icon_prefix" type="text" class="validate" ng-model='searchFrom'>
+        <input name="searchFrom" id="icon_prefix" type="text" class="validate placeholder" ng-model='searchFrom' placeholder="Jacob Mews" required>
+        <span style="color:red" ng-show="Search.searchFrom.$dirty && Search.searchFrom.$invalid">
+        <span ng-show="Search.searchFrom.$error.required">This field is required.</span>
+        </span>
         <label for="icon_prefix">From</label>
       </div>
       <div class="input-field col s6">
         <i class="mdi-action-room prefix"></i>
-        <input id="icon_telephone" type="tel" class="validate" ng-model='searchTo'>
+        <input name="searchTo" id="icon_telephone" type="tel" class="validate placeholder" ng-model='searchTo' placeholder="Amity" required>
         <label for="icon_telephone">To</label>
+        <span style="color:red" ng-show="Search.searchTo.$dirty && Search.searchTo.$invalid">
+        <span ng-show="Search.searchTo.$error.required">This field is required.</span>
+        </span>
       </div>
     </div>
-    <button class="btn waves-effect waves-light but update" type="submit" name="action">Submit
+    <button class="btn waves-effect waves-light but" type="submit" name="action" ng-disabled="Search.$invalid">Submit
       <i class="mdi-content-send right"></i>
     </button>
   </form>
 </div>
 <div class="searchRow">
-  <form class="updateForm">
+  <form name="Update" class="updateForm" novalidate>
     <div class="jumbotron text-center">
-      <input type="text" value="From" ng-model="from" placeholder="From #Ikeja">
-      <input type="text" ng-model="to" placeholder="To #Maryland">
+      <input type="text" name="from" value="From" ng-model="from" placeholder="From Ikeja" required>
+      <span style="color:red" ng-show="updateForm.from.$dirty && updateForm.from.$invalid">
+        <span ng-show="updateForm.from.$error.required">This field is required.</span>
+      </span>
+      <input type="text" name="to" ng-model="to" placeholder="To Maryland" required>
+      <span style="color:red" ng-show="updateForm.to.$dirty && updateForm.to.$invalid">
+        <span ng-show="updateForm.to.$error.required">This field is required.</span>
+      </span>
       <label></label>
-      <select class="browser-default optionValue" ng-model="is">
+      <select name="is" class="browser-default optionValue" ng-model="is" required>
         <option value="" disabled selected>Choose your option</option>
         <option value="free"> Free</option>
         <option value="slow"> Slow</option>
         <option value="congested">Congested</option>
         <option value="moving">Moving</option>
       </select>
+      <span style="color:red" ng-show="updateForm.is.$dirty && updateForm.is.$invalid">
+        <span ng-show="updateForm.is.$error.required">This field is required.</span>
+      </span>
       <!--  <input type="text" ng-model="username" placeholder="Is"> -->
-      <input type="text" ng-model="Dueto" placeholder="Due to">
+      <input type="text" name="Dueto" ng-model="Dueto" placeholder="Due to" required>
+      <span style="color:red" ng-show="updateForm.Dueto.$dirty && updateForm.Dueto.$invalid">
+        <span ng-show="updateForm.Dueto.$error.required">This field is required.</span>
+      </span>
       <p class="signIn">
         <!--  <a class="btn-floating btn-large waves-effect waves-light red" ng-click="update()"><i class="mdi-content-add"></i></a> -->
         <a class="btn-floating btn-large waves-effect waves-light red">
-          <i class="mdi-content-add" ng-click='update()'></i></a>
+          <i class="mdi-content-add" type="submit" ng-click="update()" ng-disabled="Update.$invalid"></i></a>
       </p>
     </div>
   </form>
   <div class="update">
     <div class="col s12 m7">
-      <div class="cardposition" ng-repeat="update in updates">
+      <h5 align="center">{{noResult}}</h5>
+      <div class="card" ng-repeat="update in updates">
         <div class="card-content">
-          from: {{update.from}} to: {{update.to}} is: {{update.is}} Due to: {{update.dueTo}}
+          <p>
+            from: {{update.from}} to: {{update.to}} is: {{update.is}} Due to: {{update.dueTo}}
+          </p>
+          <a><i class="small mdi-editor-mode-edit" ng-click="edit(update)" ng-model="edit"></i></a>
+          <a><i class="small mdi-content-clear"></i></a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- <ul >
-  <li> From: {{update.from}}</li>
-  <li> To: {{update.to}}</li>
-  <li> Is: {{update.is}}</li>
-  <li> Due To: {{update.dueTo}}</li>
-</ul>
-</div> -->
-<!-- <div class="card-action">
-  <a href="#">This is a link</a>
-  <a href='#'>This is a link</a>
-</div> -->
+
+<div ng-show="displayEditForm" class="editForm">
+  <form name="Update" novalidate>
+    <div class="jumbotron text-center">
+      <input type="text" name="from" value="From" ng-model="editedUpdate.from" required>
+      <span style="color:red" ng-show="updateForm.from.$dirty && updateForm.from.$invalid">
+        <span ng-show="updateForm.from.$error.required">This field is required.</span>
+      </span>
+      <input type="text" name="to" ng-model="editedUpdate.to" required>
+      <span style="color:red" ng-show="updateForm.to.$dirty && updateForm.to.$invalid">
+        <span ng-show="updateForm.to.$error.required">This field is required.</span>
+      </span>
+      <label></label>
+      <select name="is" class="browser-default optionValue" ng-model="editedUpdate.is" required>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="free"> Free</option>
+        <option value="slow"> Slow</option>
+        <option value="congested">Congested</option>
+        <option value="moving">Moving</option>
+      </select>
+      <span style="color:red" ng-show="updateForm.is.$dirty && updateForm.is.$invalid">
+        <span ng-show="updateForm.is.$error.required">This field is required.</span>
+      </span>
+      <!--  <input type="text" ng-model="username" placeholder="Is"> -->
+      <input type="text" name="Dueto" ng-model="editedUpdate.dueTo" required>
+      <span style="color:red" ng-show="updateForm.Dueto.$dirty && updateForm.Dueto.$invalid">
+        <span ng-show="updateForm.Dueto.$error.required">This field is required.</span>
+      </span>
+      <p class="signIn">
+        <!--  <a class="btn-floating btn-large waves-effect waves-light red" ng-click="update()"><i class="mdi-content-add"></i></a> -->
+        <a class="btn-floating btn-large waves-effect waves-light red">
+          <i class="mdi-content-add" type="submit" ng-click="editUpdate()"  ng-disabled="Update.$invalid"></i>
+        </a>
+      </p>
+    </div>
+  </form>
+</div>

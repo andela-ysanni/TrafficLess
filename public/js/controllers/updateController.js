@@ -1,9 +1,14 @@
 angular.module('appTrafficLess')
   .controller('appUpdates', ['$scope', 'Updates', '$http', function($scope, Updates, $http) {
+    $scope.displayEditForm = false;
+    $scope.$on('$viewContentLoaded', function() {
+      $http.get('/api/updates').success(function(updates) {
+        $scope.updates = updates;
+      }).error(function(error) {});
 
-
+    });
     $scope.update = function() {
-      //console.log('trafficData');
+      console.log('yetty');
       var update = new Updates({
         from: $scope.from,
         to: $scope.to,
@@ -11,7 +16,6 @@ angular.module('appTrafficLess')
         dueTo: $scope.Dueto,
         user: '55121b59ba90032c1f725404'
       });
-      console.log('sgasdgsa');
       update.$save(function(trafficData) {
         //var traffic = $scope.trafficData;
         //console.log('new',trafficData);
@@ -20,20 +24,41 @@ angular.module('appTrafficLess')
       });
       $http.get('/api/updates').success(function(updates) {
         $scope.updates = updates;
-        console.log('old', $scope.updates);
       }).error(function(error) {});
     };
+
     $scope.search = function() {
-      console.log('yeeahhh');
       var query = {
         from: $scope.searchFrom,
         to: $scope.searchTo
       };
       $http.post('/api/updates/update', query).success(function(data) {
-        console.log('it works', data);
-      }).error(function(error) {
-        // query = $scope.searchFrom + '&' + $scope.searchTo;
-        // $http.get('/api/updates/update?query' + query);
-      });
+        $scope.updates = data;
+        if (data.length === 0) {
+          $http.get('/api/updates').success(function(updates) {
+            $scope.updates = updates;
+          }).error(function(error) {});
+          $scope.noResult = "Oops, no match for your search but we have some traffic updates for you below";
+          $scope.searchFrom = '';
+          $scope.searchTo = '';
+        }
+      }).error(function(error) {});
+
+    };
+
+    $scope.edit = function(update) {
+      console.log(update);
+      $scope.displayEditForm = true;
+      $scope.editedUpdate = update;
+    };
+
+    $scope.editUpdate = function() {
+      console.log('yeahhhh');
+      var update = $scope.editedUpdate;
+      $http.put('/api/updates/' + update._id, update).success(function(data) {
+        console.log(data);
+
+        //$scope.updates = updates;
+      }).error(function(error) {});
     };
   }]);
