@@ -1,3 +1,7 @@
+/*   html {
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  }*/
+
  body {
     display: flex;
     min-height: 100vh;
@@ -7,6 +11,9 @@
 .footer  {
     flex: 1 0 auto;
   }
+.footer-text{
+  text-align: center;
+}
 .name {
   float: left;
   height: 50px;
@@ -135,9 +142,48 @@ nav {
   margin-bottom: 20px;
   width: 500px;
 }
+
+.hi {
+  float: right !important;
+}
+
+.but {
+  float: right;
+}
+
+.hey {
+  margin-left: 500px;
+}
+
 footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #388E3C;
 }
-
+.input {
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=date], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  outline: none;
+  height: 3rem;
+  width: 50%;
+  font-size: 1rem;
+  margin: 0 0 15px 1200px;
+  padding: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+}
+.update {
+  background-color: 
+}

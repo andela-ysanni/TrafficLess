@@ -1,16 +1,27 @@
+<div class="row">
+  <form class="col s12 hi" ng-submit="search()">
+    <div class="row hey">
+      <div class="input-field col s6">
+        <i class="mdi-maps-directions-walk prefix"></i>
+        <input id="icon_prefix" type="text" class="validate" ng-model='searchFrom'>
+        <label for="icon_prefix">From</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="mdi-action-room prefix"></i>
+        <input id="icon_telephone" type="tel" class="validate" ng-model='searchTo'>
+        <label for="icon_telephone">To</label>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light but update" type="submit" name="action">Submit
+      <i class="mdi-content-send right"></i>
+    </button>
+  </form>
+</div>
 <div class="searchRow">
-  <div class="col-md-2"></div>
-  <div class="col-md-2"></div>
-  <div class="col-md-6">
-    <input ng-model='searchFrom' placeholder="From" name="from">
-    <input ng-model='searchTo' placeholder="To" name="to">
-    <button class="searchButton" ng-click='search()'> Search </button>
-  </div>
   <form class="updateForm">
     <div class="jumbotron text-center">
       <input type="text" value="From" ng-model="from" placeholder="From #Ikeja">
       <input type="text" ng-model="to" placeholder="To #Maryland">
-      
       <label></label>
       <select class="browser-default optionValue" ng-model="is">
         <option value="" disabled selected>Choose your option</option>
@@ -37,15 +48,15 @@
       </div>
     </div>
   </div>
-  <!-- <div>
-<ul >
+</div>
+<!-- <ul >
   <li> From: {{update.from}}</li>
   <li> To: {{update.to}}</li>
   <li> Is: {{update.is}}</li>
   <li> Due To: {{update.dueTo}}</li>
 </ul>
 </div> -->
-  <!-- <div class="card-action">
+<!-- <div class="card-action">
   <a href="#">This is a link</a>
   <a href='#'>This is a link</a>
 </div> -->

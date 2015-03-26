@@ -21,5 +21,6 @@ appTrafficLess.config(['$routeProvider', '$locationProvider',
       enabled: true,
       requireBase: false
     });
+    
   }
 ]);
