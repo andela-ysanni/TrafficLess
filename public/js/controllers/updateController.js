@@ -5,7 +5,6 @@ angular.module('appTrafficLess')
       $http.get('/api/updates').success(function(updates) {
         $scope.updates = updates;
       }).error(function(error) {});
-
     });
     $scope.update = function() {
       var update = new Updates({
@@ -62,12 +61,14 @@ angular.module('appTrafficLess')
 
     $scope.delete = function(updateId) {
       //$scope.updates = update;
-      confirm("Are you sure you want to delete?");
-      $http.delete('/api/updates/'+ updateId).success(function() {
-         $http.get('/api/updates').success(function(updates) {
-            $scope.updates = updates;
-          }).error(function(error) {});
-      }).error(function(error) {});
+      var deleteUpdate = confirm("Are you sure you want to delete?");
+      if (deleteUpdate) {
+        $http.delete('/api/updates/'+ updateId).success(function() {
+           $http.get('/api/updates').success(function(updates) {
+              $scope.updates = updates;
+            }).error(function(error) {});
+        }).error(function(error) {});
+      }
     };
   }]);
    
