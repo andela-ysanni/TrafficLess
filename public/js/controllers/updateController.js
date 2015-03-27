@@ -14,15 +14,16 @@ angular.module('appTrafficLess')
         dueTo: $scope.Dueto,
         user: '55121b59ba90032c1f725404'
       });
-      update.$save(function(trafficData) {
-        //var traffic = $scope.trafficData;
-        //console.log('new',trafficData);
-      }, function(error) {
+      update.$save(function(trafficData) {}, function(error) {
         console.log(error);
       });
       $http.get('/api/updates').success(function(updates) {
         $scope.updates = updates;
       }).error(function(error) {});
+      $scope.from = '';
+      $scope.to = '';
+      $scope.is = '';
+      $scope.Dueto = '';
     };
 
     $scope.search = function() {
@@ -53,22 +54,20 @@ angular.module('appTrafficLess')
       $scope.displayEditForm = false;
       var update = $scope.editedUpdate;
       $http.put('/api/updates/' + update._id, update).success(function(data) {
-         $http.get('/api/updates').success(function(updates) {
-            $scope.update = updates;
-          }).error(function(error) {});
+        $http.get('/api/updates').success(function(updates) {
+          $scope.update = updates;
+        }).error(function(error) {});
       }).error(function(error) {});
     };
 
     $scope.delete = function(updateId) {
-      //$scope.updates = update;
       var deleteUpdate = confirm("Are you sure you want to delete?");
       if (deleteUpdate) {
-        $http.delete('/api/updates/'+ updateId).success(function() {
-           $http.get('/api/updates').success(function(updates) {
-              $scope.updates = updates;
-            }).error(function(error) {});
+        $http.delete('/api/updates/' + updateId).success(function() {
+          $http.get('/api/updates').success(function(updates) {
+            $scope.updates = updates;
+          }).error(function(error) {});
         }).error(function(error) {});
       }
     };
   }]);
-   
