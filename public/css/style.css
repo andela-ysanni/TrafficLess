@@ -138,10 +138,15 @@ nav {
   margin: 0.5rem 0 1rem 0
 }
 
-.updateForm {
+/*.updateForm {
   margin-left: -950px;
   ` margin-right: 200px;
   margin-bottom: 20px;
+  width: 500px;
+}*/
+.updateForm {
+  margin-left: -950px;
+  margin-bottom: 350px;
   width: 500px;
 }
 
@@ -161,6 +166,7 @@ footer.page-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #388E3C;
+  position: relative;
 }
 
 .input {
