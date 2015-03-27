@@ -28,11 +28,12 @@ var db = require('./config/db');
 var port = process.env.PORT || 8000;
 // connect to our livesite 
 if (env === 'livesite') {
-	mongoose.connect(db.localurl);
+  mongoose.connect(db.productionurl);
+	
 }
 // connect to our production url
 else {
-	mongoose.connect(db.productionurl);
+	mongoose.connect(db.localurl);
 }
 
 //db.dbconnect();
