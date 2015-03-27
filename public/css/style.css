@@ -19,11 +19,7 @@ body {
 
 .name {
   float: left;
-  height: 50px;h6 {
-  font-size: 18px;
-  line-height: 1.1rem;
-  margin: 0.5rem 0 0.4rem 55rem;
-}
+  height: 50px;
   padding: 15px 15px;
   font-size: 30px;
   line-height: 20px;
