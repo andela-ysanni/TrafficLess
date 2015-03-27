@@ -71,7 +71,7 @@
       <div class="card" ng-repeat="update in updates track by $index">
         <div class="card-content">
           <p>
-            From: {{update.from}} to: {{update.to}} is: <span style="color:#388E3C;">{{update.is}}</span> due to: {{update.dueTo}}
+            From: {{update.from}} to: {{update.to}} is: <span style="color:#388E3C;">{{update.is}}</span> due to: {{update.dueTo}} posted on: {{update.postedOn}}
           </p>
           <a><i class="small mdi-editor-mode-edit" ng-click="edit(update)" ng-model="edit"></i></a>
           <a><i class="small mdi-content-clear" ng-click="delete(update._id)"></i></a>

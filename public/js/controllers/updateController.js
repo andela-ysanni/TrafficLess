@@ -8,10 +8,10 @@ angular.module('appTrafficLess')
     });
     $scope.update = function() {
       var update = new Updates({
-        from: $scope.from,
-        to: $scope.to,
-        is: $scope.is,
-        dueTo: $scope.Dueto,
+        from: angular.lowercase($scope.from),
+        to: angular.lowercase($scope.to),
+        is: angular.lowercase($scope.is),
+        dueTo: angular.lowercase($scope.Dueto),
         user: '55121b59ba90032c1f725404'
       });
       update.$save(function(trafficData) {}, function(error) {
@@ -28,8 +28,8 @@ angular.module('appTrafficLess')
 
     $scope.search = function() {
       var query = {
-        from: $scope.searchFrom,
-        to: $scope.searchTo
+        from: angular.lowercase($scope.searchFrom),
+        to: angular.lowercase($scope.searchTo)
       };
       $http.post('/api/updates/update', query).success(function(data) {
         $scope.updates = data;
