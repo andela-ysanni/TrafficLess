@@ -16,13 +16,12 @@ var session = require('express-session');
 var app = express();
 var consolidate = require('consolidate');
 
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'livesite';
+var env = process.env.NODE_ENV || 'livesite';
 
 // configuration ===========================================
 
 // config files
 var db = require('./config/db');
-
 
 // set our port
 var port = process.env.PORT || 8000;

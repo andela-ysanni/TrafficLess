@@ -34,7 +34,7 @@ var User = require('../models/user_model');
      User.findById(req.params.user_id, function(err, user) {
        if (err)
          res.json(err);
-       //putting the single user in the request.
+       //putting the single user in the request that will be available in the next function.
        req.user = user;
        next();
      });
