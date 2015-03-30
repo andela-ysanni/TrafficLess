@@ -4,7 +4,7 @@ var User = require('../models/user_model');
  var newUser = {
 
    getAllUsers: function(req, res) {
-     // use mongoose to get all users in the database.
+     //use mongoose to get all users in the database.
      User.find(function(err, users) {
        // if there is an error retrieving, send the error. 
        // nothing after res.send(err) will execute
@@ -14,7 +14,7 @@ var User = require('../models/user_model');
      });
    },
    
-   // route to handle creating goes here (post)
+   //route to handle creating goes here (post)
    createUser: function(req, res) { User.find().sort('-date_registered');
      // var body = {
      //   first_name: req.body.first_name,

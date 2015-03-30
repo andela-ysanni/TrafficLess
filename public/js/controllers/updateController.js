@@ -6,6 +6,7 @@ angular.module('appTrafficLess')
         $scope.updates = updates;
       }).error(function(error) {});
     });
+
     $scope.update = function() {
       var update = new Updates({
         from: angular.lowercase($scope.from),

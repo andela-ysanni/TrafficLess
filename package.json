@@ -10,9 +10,6 @@
     "url": "https://github.com/andela-ysanni/TrafficLess/issues"
   },
   "homepage": "https://github.com/andela-ysanni/TrafficLess",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Yetty",
   "license": "ISC",
   "repository": {
